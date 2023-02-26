@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <style>
+        body {
+            text-align: center;
+            background: url('img.png') no-repeat;
+            font-weight: bold;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        #container {
+            height: 80vh;
+            width: 50vw;
+            margin: auto;
+            background-color: rgb(255, 153, 0);
+            opacity: 0.93;
+            color: aliceblue;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 3vw;
+            border: 2px solid black;
+            border-radius: 35px;
+        }
+
+        #msg-ele {
+            font-weight: lighter;
+            font-style: italic;
+        }
+
+        #btn-ele {
+            margin: 2px;
+            width: 105px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-weight: bold;
+            background-color: rgb(121 219 95 / 1);
+            border: none;
+            border-radius: 2px;
+        }
+
+        #btn-ele:hover {
+            color: white;
+            cursor: pointer;
+            background-color: rgb(255, 153, 0);
+            border: 2px solid black;
+        }
+
+        #new-card {
+            padding: 0;
+            margin: 0;
+            font-weight: lighter;
+            font-size: medium;
+        }
+
+        h1 {
+            font-size: 5vw;
+        }
+
+        #new-card {
+            color: black;
+        }
+
+        b {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Black<b>Jack</b></h1>
+        <p id="msg-ele">Want to play a round?</p>
+        <p id="cards-ele">Cards:</p>
+        <p id="sum-ele">Sum:</p>
+        <button id="btn-ele" onclick="startGame()">START GAME</button><br>
+        <button id="btn-ele" onclick="drawNew()">DRAW NEW</button>
+        <button id="btn-ele" onclick="reset()">RESET</button>
+
+        <p id="new-card"></p>
+    </div>
+    <script>let card1 = Math.floor(Math.random() * 11) + 2
+        let card2 = Math.floor(Math.random() * 11) + 2
+        let sum = card1 + card2
+        let message = ""
+        let cards_arr = [card1, card2]
+        let crd_msg = document.querySelector("#cards-ele")
+        let result_msg = document.querySelector("#msg-ele")
+        let sum_msg = document.querySelector("#sum-ele")
+        let newcard_msg = document.querySelector("#new-card")
+        let cardSet = "Cards: " + card1 + " " + card2
+        let countCards = 0;
+
+        function startGame() {
+            renderGame()
+        }
+        function renderGame() {
+            crd_msg.textContent = cardSet + " "
+            for (let i = 2; i < cards_arr.length; i++) {
+                crd_msg.textContent += cards_arr[i] + " ";
+            }
+            sum_msg.textContent = "Sum: " + sum
+            if (sum <= 20) {
+                message = "Do you want to draw a new card?"
+            }
+            else if (sum === 21) {
+                message = "You've got blackjack!"
+            }
+            else {
+                message = "You're out of the game!"
+            }
+            result_msg.textContent = message
+        }
+
+        function drawNew() {
+            let card_n = Math.floor(Math.random() * 11) + 2
+            cards_arr.push(card_n)
+            countCards++;
+            newcard_msg.textContent = countCards + " new card drawn!"
+            sum += card_n
+            startGame()
+        }
+        function reset() {
+            card1 = Math.floor(Math.random() * 11) + 2
+            card2 = Math.floor(Math.random() * 11) + 2
+            cardSet = "Cards: " + card1 + " " + card2
+            cards_arr = [card1, card2]
+            sum = card1 + card2
+            result_msg.textContent = "Want to play a round?"
+            crd_msg.textContent = "Cards: "
+            sum_msg.textContent = "Sum: "
+            newcard_msg.textContent = ""
+            countCards = 0
+
+        }</script>
+</body>
+
+</html>
