@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calc</title>
+    <style>
+        body {
+            background-color: rgb(184, 174, 162);
+        }
+
+        #container {
+            width: 40vw;
+            height: 60vh;
+            margin: auto;
+            margin-top: 50px;
+            padding-top: 100px;
+            text-align: center;
+            font-size: 3vw;
+            background: rgba(53, 89, 220, 0.564);
+        }
+
+        .num-input {
+            width: 50px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: aqua;
+        }
+
+        h4 {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <!-- <span id="num1">0</span>
+        <span id="num2">0</span><br> -->
+        <h4>Simple Calculator</h4>
+        <input class="num-input" type="number" id="num1" placeholder="num1">
+        <input class="num-input" type="number" id="num2" placeholder="num2"><br>
+        <button id="add" onclick="add()">Add</button>
+        <button id="sub" onclick="subtract()">Sub</button>
+        <button id="mult" onclick="multiply()">Mult</button>
+        <button id="divi" onclick="divide()">Divide</button><br />
+        <button id="expo" onclick="exponent()">Expo</button><br />
+        Result: <br>
+        <span id="sum"></span><br>
+        <button id="cle" onclick="clear_sum()">Clear</button><br>
+    </div>
+    <script>
+        let sum_ele = document.querySelector("#sum")
+        function add() {
+            let num1_ele = Number(document.querySelector("#num1").value)
+            let num2_ele = Number(document.querySelector("#num2").value)
+            let result = num1_ele + num2_ele;
+            sum_ele.textContent = result
+        }
+        function subtract() {
+            let num1_ele = Number(document.querySelector("#num1").value)
+            let num2_ele = Number(document.querySelector("#num2").value)
+            let result = num1_ele - num2_ele;
+            sum_ele.textContent = result
+        }
+        function multiply() {
+            let num1_ele = Number(document.querySelector("#num1").value)
+            let num2_ele = Number(document.querySelector("#num2").value)
+            let result = num1_ele * num2_ele;
+            sum_ele.textContent = result
+        }
+        function divide() {
+            let num1_ele = Number(document.querySelector("#num1").value)
+            let num2_ele = Number(document.querySelector("#num2").value)
+            let result = num1_ele / num2_ele;
+            sum_ele.textContent = result.toFixed(3)
+        }
+        function exponent() {
+            let num1_ele = Number(document.querySelector("#num1").value)
+            let num2_ele = Number(document.querySelector("#num2").value)
+            let result = Math.pow(num1_ele, num2_ele)
+            sum_ele.textContent = result
+        }
+        function clear_sum() {
+            sum_ele.textContent = 0;
+        }
+
+    </script>
+</body>
+
+</html>
